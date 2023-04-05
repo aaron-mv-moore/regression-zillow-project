@@ -1,4 +1,4 @@
-# Zillow Data: Linear Regression
+# Zillow Project: Linear Regression
 
 ## Description
 - This project will us linear regression models to predict the tax value for properties using a Zillow dataset. It will go through the data science pipeline and create a model that accurately predicts the tax value of properties in the dataset.
@@ -33,9 +33,7 @@
 | baths | The number of bathrooms |
 | square_feet | The number of calculated finished square feet |
 | tax_value | Total tax assessed value of the property |
-| year_built | The year the property was built |
 | tax_amount | Total assessed property tax |
-| fips | Federal Information Processing System (FIPS) Codes for States and Counties FIPS codes are numbers which uniquely identify geographic areas. |
 
 ## Steps to Reproduce
 1. Clone this repo
