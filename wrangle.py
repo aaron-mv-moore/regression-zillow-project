@@ -102,7 +102,9 @@ def clean_data(df, focus=True):
                                     'low_limit':  q1 - 1.5 * iqr,
                           'up_limit': q3 + 1.5 * iqr
                          }
-
+    # drop nulls and duplicates
+    df = df.dropna().drop_duplicates()
+    
     # for each cols
     for col in df:
         
@@ -114,8 +116,12 @@ def clean_data(df, focus=True):
             # remove all observations that are below the lower limit
             df = df[(df[col] >= outlier_limits[col]['low_limit'])]
 
-    # drop nulls and duplicates
-    df = df.dropna().drop_duplicates()
+            # for tax value and square feet
+            if col in ['taxvaluedollarcnt', 'calculatedfinishedsquarefeet']:
+                
+                # remove all observations that are at or below the lower limit 5th percentile
+                df = df[(df[col] >= outlier_limits[col]['low_limit_5'])]
+
     
     # change fips codes to county names
     df.fips.replace(to_replace=[6037.0, 6059.0], value=['Los Angeles', 'Orange'], inplace=True)
@@ -155,7 +161,7 @@ def split_data(df):
     # exits function and returns train, validate, test
     return train, validate, test
 
-def wrangle_zillow():
+def wrangle_zillow(focus=True):
     '''
     Arguments: none
     Actions:
@@ -165,14 +171,17 @@ def wrangle_zillow():
     Returns: train, validate, test
     Modules: get_zillow_data, clean_data, split_data
     '''
+
+
     # splits cleaned data into train, validate, test
     train, validate, test = split_data(
         
         # cleans data
         clean_data(
         
-            # retrieves data
-            get_zillow()))
+            # retrieves data and uses kwarg
+            get_zillow(), focus))
+    
     
     # exits function with wrangled data
     return train, validate, test
