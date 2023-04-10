@@ -33,7 +33,6 @@
 | baths | The number of bathrooms |
 | square_feet | The number of calculated finished square feet |
 | tax_value | Total tax assessed value of the property |
-| tax_amount | Total assessed property tax |
 
 ## Steps to Reproduce
 1. Clone this repo
@@ -41,7 +40,11 @@
 3. Run notebook
 
 ## Takeaways
-- TBD
+- Our tax value is not normally ditributed
+- There is a difference in the tax value of properties in Orange County and Los Angeles County
+- There is a stonger correlation between square feet and tax value for homes in Orange County than Los Angeles County proerties
+- Drivers discovered did lead to the success of performing better than the baseline for properties in Orange County
 
 ## Recommendations
-- TBD
+- Find data that represents smaller geographic areas for each property, such as zip codes, due to the wide range of tax values in a single county
+- Extend the life of this project to increase time for feature selection and featuren engineering
