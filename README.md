@@ -36,8 +36,9 @@
 
 ## Steps to Reproduce
 1. Clone this repo
-2. Insert credentials in the blank_eny.py file and save
-3. Run notebook
+2. Insert credentials in the blank_eny.py file
+3. Save blank_env.py as env.py
+4. Run notebook
 
 ## Takeaways
 - Our tax value is not normally ditributed
