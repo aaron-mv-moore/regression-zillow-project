@@ -1,7 +1,7 @@
 # Zillow Project: Linear Regression
 
 ## Description
-- This project will us linear regression models to predict the tax value for properties using a Zillow dataset. It will go through the data science pipeline and create a model that accurately predicts the tax value of properties in the dataset.
+- This project will use linear regression models to predict the tax value for properties using a Zillow dataset. It will go through the data science pipeline and create a model that accurately predicts the tax value of properties in the dataset.
 
 ## Goals
 - Predict the values of single unit properties using the obervations from 2017
