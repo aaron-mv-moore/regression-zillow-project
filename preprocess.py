@@ -2,6 +2,8 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler, RobustScaler, StandardScaler
 
+from wrangle import wrangle_zillow
+
 
 ### SCALING FUNCTIONS
 def min_max_scaler(X_train, 
@@ -215,3 +217,41 @@ def scale_data(X_train, col_list, scaler, X_validate = None, X_test = None):
         
         # prompt user to try again
         return print('Please specify the scaler from this list [\'standard\', \'robust\', \'minmax\']')
+
+
+
+# preprocess
+def preprocess_zillow():
+    '''
+    Actions: scales data ready for modeling
+    '''
+    # get data
+    train, validate, test = wrangle_zillow()
+    
+    # get only oc for each
+    train = train[train.county == 'Orange']
+    # get only oc for each
+    validate = validate[validate.county == 'Orange']
+    # get only oc for each
+    test = test[test.county == 'Orange']
+    
+    # set list of num columns
+    num_cols = ['square_feet', 'beds', 'baths']
+    
+    # xtrain, ytrain
+    X_train = train[num_cols]
+    y_train = train[['tax_value']]
+
+    # xvalidate, yvalidate
+    X_validate = validate[num_cols]
+    y_validate = validate[['tax_value']]
+
+    # xtest, ytest
+    X_test = test[num_cols]
+    y_test = test[['tax_value']]
+    
+    # scaling
+    X_train_scaled, X_validate_scaled, X_test_scaled = scale_data(X_train, num_cols, 'minmax', X_validate=X_validate, X_test=X_test)
+    
+    # exit function and return
+    return X_train_scaled, X_validate_scaled, X_test_scaled, y_train, y_validate, y_test
