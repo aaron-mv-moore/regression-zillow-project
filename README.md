@@ -33,6 +33,8 @@
 | baths | The number of bathrooms |
 | square_feet | The number of calculated finished square feet |
 | tax_value | Total tax assessed value of the property |
+| county | County name based on the FIPS (Federal Information Processing Standards) code |
+
 
 ## Steps to Reproduce
 1. Clone this repo
